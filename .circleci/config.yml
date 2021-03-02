@@ -19,6 +19,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: start-database-serve
+          command: 'pg_ctl -D /dev/shm/pgdata/data -l logfile start'
+      - run:
           name: update-npm
           command: 'sudo npm install -g npm@5'
       - restore_cache:
