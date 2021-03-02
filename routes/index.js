@@ -9,7 +9,7 @@ import errorHandler from '../helpers/errorHandler';
 const routes = Router();
 
 routes.get('/', (request, response) => {
-  response.json({ info: 'Wellcome, Get your todo list done today.' })
+  response.json({ info: 'Welcome, Get your todo list done today.' })
 })
 routes.get('/todos', getAllTodo)
 routes.post('/todos/add', validateTodo, validations, addTodo)

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test",
+    "test": "NODE_ENV=test sequelize db:migrate:undo:all && npm run db:migrate:test && npm run db:migrate:seed:test && NODE_ENV=test nyc --reporter=html --reporter=text mocha --require @babel/register tests/* --exit",
     "start": "node build/index.js",
     "dev": "nodemon --require @babel/register index.js",
     "build-src": "babel src -d build/src ",
@@ -15,7 +15,8 @@
     "db:migrate:undo:all": "./node_modules/.bin/sequelize db:migrate:undo:all",
     "db:migrate:test": "NODE_ENV=test ./node_modules/.bin/sequelize db:migrate",
     "db:migrate:seed:test": "NODE_ENV=test ./node_modules/.bin/sequelize db:seed:all",
-    "db:migrate:undo:all:test": "NODE_ENV=test ./node_modules/.bin/sequelize db:migrate:undo:all"
+    "db:migrate:undo:all:test": "NODE_ENV=test ./node_modules/.bin/sequelize db:migrate:undo:all",
+    "coverage": "nyc report --reporter=text-lcov"
   },
   "repository": {
     "type": "git",
@@ -42,7 +43,11 @@
     "@babel/core": "^7.13.8",
     "@babel/node": "^7.13.0",
     "@babel/register": "^7.13.8",
+    "chai": "^4.3.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^8.3.0",
     "nodemon": "^2.0.7",
+    "nyc": "^15.1.0",
     "sequelize-cli": "^6.2.0"
   }
 }

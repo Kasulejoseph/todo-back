@@ -35,7 +35,7 @@ export const updateTodo = async (req, res) => {
       .status(400)
       .send({ status: 400, message: "No field was updated" });
   }
-  return res.status(200).send({ status: 200, message: "Success updated" });
+  return res.status(200).send({ status: 200, message: "Successfully updated" });
 };
 
 export const deleteTodo = async (req, res) => {
