@@ -34,7 +34,7 @@ jobs:
             - ./node_modules
       - run:
           name: Create db
-          command: ./node_modules/.bin/sequelize db:create
+          command: npm db:create
       - run:
           name: Wait for db
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
