@@ -38,13 +38,13 @@
     "pg": "^8.5.1",
     "pg-hstore": "^2.3.3",
     "sequelize": "^6.5.0",
-    "sequelize-cli": "^6.2.0"
+    "sequelize-cli": "^6.2.0",
+    "@babel/register": "^7.13.8"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.0",
     "@babel/core": "^7.13.8",
     "@babel/node": "^7.13.0",
-    "@babel/register": "^7.13.8",
     "chai": "^4.3.0",
     "chai-http": "^4.3.0",
     "mocha": "^8.3.0",
