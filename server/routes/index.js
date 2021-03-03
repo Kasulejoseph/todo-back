@@ -11,9 +11,9 @@ const routes = Router();
 routes.get('/', (request, response) => {
   response.json({ info: 'Welcome, Get your todo list done today.' })
 })
-routes.get('/todos', getAllTodo)
-routes.post('/todos/add', validateTodo, validations, addTodo)
-routes.get('/todos/:id', checkTodoExist, validations, getOneTodo)
+routes.get('/todos', errorHandler(getAllTodo))
+routes.post('/todos/add', validateTodo, validations, errorHandler(addTodo))
+routes.get('/todos/:id', checkTodoExist, validations, errorHandler(getOneTodo))
 routes.put('/todos/:id', checkTodoExist, validations, errorHandler(updateTodo))
 routes.delete('/todos/:id', checkTodoExist, validations, errorHandler(deleteTodo))
 
