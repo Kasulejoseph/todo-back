@@ -4,11 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test sequelize db:migrate:undo:all && npm run db:migrate:test && npm run db:migrate:seed:test && NODE_ENV=test nyc --reporter=html --reporter=text mocha --require @babel/register tests/* --exit",
+    "test": "NODE_ENV=test sequelize db:migrate:undo:all && npm run db:migrate:test && npm run db:migrate:seed:test && NODE_ENV=test nyc --reporter=html --reporter=text mocha --require @babel/register ./server/tests/* --exit",
     "start": "node build/index.js",
-    "dev": "nodemon --require @babel/register index.js",
-    "build-src": "babel src -d build/src ",
-    "build": "rm -rf build && babel index.js --out-dir ./build --source-maps && npm run build-src",
+    "dev": "nodemon --require @babel/register ./server/index.js",
+    "build": "rm -rf build && babel -d ./build ./server -s",
     "db:migrate": "./node_modules/.bin/sequelize db:migrate",
     "db:seed": "./node_modules/.bin/sequelize db:seed:all",
     "db:seed:undo": "./node_modules/.bin/sequelize db:seed:undo:all",
@@ -41,6 +40,7 @@
     "sequelize": "^6.5.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.13.0",
     "@babel/core": "^7.13.8",
     "@babel/node": "^7.13.0",
     "@babel/register": "^7.13.8",
