@@ -16,7 +16,8 @@ module.exports = (sequelize, DataTypes) => {
   todos.init({
     category: DataTypes.STRING,
     description: DataTypes.STRING,
-    dueDate: DataTypes.DATE
+    dueDate: DataTypes.DATE,
+    status: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'todos',

@@ -7,6 +7,7 @@ export const addTodo = async (req, res) => {
     category,
     description,
     dueDate,
+    status: "pending"
   };
   const data = await todos.create(newTodo);
   return res.status(201).send({ status: 201, data });
@@ -18,7 +19,12 @@ export const getOneTodo = async (req, res) => {
 };
 
 export const getAllTodo = async (req, res) => {
-  const data = await todos.findAll({});
+  const queryParams = req.query ? req.query : {};
+  const order = [['createdAt', 'DESC']]
+  const data = await todos.findAll({
+    where: queryParams,
+    order
+  });
   return res.status(200).send({ status: 200, data });
 };
 
