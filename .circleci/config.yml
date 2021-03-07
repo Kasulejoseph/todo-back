@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
   node: circleci/node@3.0.0
+  codecov: codecov/codecov@1.0.2
 workflows:
   node-tests:
     jobs:
@@ -43,10 +44,13 @@ jobs:
           command: npm test --collectCoverage=true
       - run:
           name: code-coverage
-          command: './node_modules/.bin/nyc report --reporter=text-lcov'
+          command: './node_modules/.bin/nyc report --reporter=text-lcov > ./coverage/coverage.lcov'
+      - codecov/upload:
+          file: ./coverage/coverage.lcov
+          token: e9dd6d3f-c3ab-4756-87ee-67f1935d3397
       - store_artifacts:
-          path: test-results.xml
+          path: coverage.lcov
       - store_artifacts:
           path: coverage
       - store_test_results:
-          path: test-results.xml
+          path: ./coverage/coverage.lcov
